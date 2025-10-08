@@ -2,8 +2,6 @@
 
 Toy workload to learn how to train models on the cloud. ResNet18 trained on CIFAR-10.
 
----
-
 ## 🚀 Setup
 
 1. Activate a venv
@@ -35,8 +33,6 @@ python3 cifar10_resnet18.py --epochs 5 --batch-size 128
 ```
 python3 cifar10_resnet18.py --epochs 20 --batch-size 256 --amp --workers 8
 ```
-
----
 
 ## 📁 Data and Output Directories
 
