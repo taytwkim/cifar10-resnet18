@@ -31,7 +31,55 @@ python3 cifar10_resnet18.py --epochs 5 --batch-size 128
 
 * On NVIDIA GPUs, enable mixed precision for speed:
 ```
-python3 cifar10_resnet18.py --epochs 20 --batch-size 256 --amp --workers 8
+python3 cifar10_resnet18.py --epochs 20 --batch-size 256 --amp --workers 4
+```
+
+## ☁️ Train in the Cloud
+
+1. Open GCP console, launch Compute Engine with GPU attached (e.g., `n1-standard-4`/`T4`/`Ubuntu 22.04 LTS`).
+* Allocate plenty of storage space (~50 GB to be safe). 
+
+2. SSH to VM, check if GPU is attached.
+```bash!
+lspci | grep -i "nvidia"
+```
+
+3. Check if GPU driver is available.
+```bash!
+nvidia-smi
+```
+
+If not, [install driver](https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#linux).
+
+4. Setup venv and install dependencies.
+```bash!
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+
+# install CUDA-enabled wheels (CUDA 12.1 build)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+pip install numpy pillow
+
+# quick check
+python - <<'PY'
+import torch
+print("cuda available?:", torch.cuda.is_available())
+print("cuda build:", torch.version.cuda)
+print("gpu:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "none")
+PY
+```
+
+5. Clone this repo.
+```bash!
+sudo apt-get install -y git
+git clone https://github.com/taytwkim/cifar10-resnet18.git
+cd cifar10-resnet18
+```
+
+7. Run code
+```
+python3 cifar10_resnet18.py --epochs 20 --batch-size 256 --amp --workers 4
 ```
 
 ## 📁 Data and Output Directories
