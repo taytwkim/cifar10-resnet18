@@ -4,26 +4,26 @@ Toy workload to learn how to train models on the cloud. ResNet18 trained on CIFA
 
 ## 🚀 Setup
 
-1. Activate a venv
+1. Activate a venv.
 ```bash!
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 ```
 
-2. Install dependencies
+2. Install dependencies.
 
 * If on CPU or Apple Silicon (MPS):
 ```bash!
 pip install -r requirements.txt
 ```
 
-* If on an NVIDIA GPU (CUDA), prefer CUDA wheels:
+* If on NVIDIA, prefer CUDA wheels:
 ```bash!
 pip install torch torchvision numpy pillow --index-url https://download.pytorch.org/whl/cu121
 ```
 
-3. Run
+3. Train model.
 
 ```bash!
 python3 cifar10_resnet18.py --epochs 5 --batch-size 128
@@ -77,7 +77,7 @@ git clone https://github.com/taytwkim/cifar10-resnet18.git
 cd cifar10-resnet18
 ```
 
-7. Run code
+7. Train model.
 ```
 python3 cifar10_resnet18.py --epochs 20 --batch-size 256 --amp --workers 4
 ```
