@@ -1,0 +1,23 @@
+# Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Envs
+.venv/
+venv/
+
+# Datasets & artifacts
+data/
+artifacts/*
+!artifacts/.gitkeep
+
+# Jupyter / editors / OS
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
+
+# Misc
+*.log
+tmp/
