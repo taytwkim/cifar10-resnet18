@@ -1,7 +1,9 @@
 """
-smoke test for distributed training
+Smoke test for distributed training
 
-The output should look like:
+Compute the sum of ranks
+
+The output should look like (for 2 ranks):
 rank 0/2 backend=nccl device=cuda:0 sum=1.0
 rank 1/2 backend=nccl device=cuda:0 sum=1.0
 """
